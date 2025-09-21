@@ -36,7 +36,7 @@ const Nav = () => {
             About
           </a>
           <a
-            href="#projects"
+            href="#project"
             className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
           >
             Projects
@@ -80,7 +80,7 @@ const Nav = () => {
             About
           </a>
           <a
-            href="#projects"
+            href="#project"
             className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
           >
             Projects
