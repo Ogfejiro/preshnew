@@ -30,16 +30,16 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Hi! I'm Ogwara Precious, a developer based in Nigeria. I specialize
-              in creating user-friendly and efficient digital products.
+              Hi! I'm Ogwara Precious, a  Frontend Developer with 3years experience. I specialize
+              in creating user-friendly and efficient digital websites.
             </p>
-            {/* Custom Button styled with Tailwind */}
+            
             <button
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
               data-aos="zoom-in"
               data-aos-delay="600"
             >
-              Learn More
+              Contact Me
             </button>
           </div>
 

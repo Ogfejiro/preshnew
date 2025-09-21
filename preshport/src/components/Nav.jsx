@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { ModeToggle } from "./ModeToggle";
+import { Menu, X } from "lucide-react"; // icons for mobile menu
 
 const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu visibility
+  const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu
   const [darkMode, setDarkMode] = useState(false);
 
   // ✅ Apply/remove dark mode on <html> tag globally
@@ -27,11 +28,77 @@ const Nav = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4">
-          {/* ✅ Only use ModeToggle, but pass state so it controls global dark mode */}
+        <div className="hidden md:flex items-center gap-6">
+          <a
+            href="#about"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Projects
+          </a>
+          <a
+            href="#services"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Services
+          </a>
+          <a
+            href="#contact"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Contact
+          </a>
+
+          {/* Mode Toggle */}
           <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
         </div>
+
+        {/* Mobile Menu Button + ModeToggle */}
+        <div className="md:hidden flex items-center gap-4">
+          <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-800 dark:text-gray-200 focus:outline-none"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-white dark:bg-gray-900 px-4 pt-4 pb-6 space-y-4">
+          <a
+            href="#about"
+            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Projects
+          </a>
+          <a
+            href="#services"
+            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Services
+          </a>
+          <a
+            href="#contact"
+            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Contact
+          </a>
+        </div>
+      )}
     </nav>
   );
 };
