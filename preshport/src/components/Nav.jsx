@@ -49,24 +49,26 @@ const Nav = () => {
       </nav>
 
       {/* Mobile Bottom Nav */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 flex justify-around items-center py-3 z-50 shadow-md">
-        <a href="#about" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
-          <User size={22} />
-          <span className="text-xs">About</span>
-        </a>
-        <a href="#services" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
-          <Folder size={22} />
-          <span className="text-xs">Services</span>
-        </a>
-        <a href="#project" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
-          <Briefcase size={22} />
-          <span className="text-xs">Project</span>
-        </a>
-        <a href="#contact" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
-          <Mail size={22} />
-          <span className="text-xs">Contact</span>
-        </a>
-      </div>
+      {/* Mobile Bottom Nav */}
+<div className="md:hidden fixed bottom-0 left-0 w-full bg-transparent backdrop-blur-md border-t border-gray-200 flex justify-around items-center py-3 z-50">
+  <a href="#about" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
+    <User size={22} />
+    <span className="text-xs">About</span>
+  </a>
+  <a href="#services" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
+    <Folder size={22} />
+    <span className="text-xs">Services</span>
+  </a>
+  <a href="#project" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
+    <Briefcase size={22} />
+    <span className="text-xs">Project</span>
+  </a>
+  <a href="#contact" className="flex flex-col items-center text-gray-600 hover:text-blue-600">
+    <Mail size={22} />
+    <span className="text-xs">Contact</span>
+  </a>
+</div>
+
     </>
   );
 };
