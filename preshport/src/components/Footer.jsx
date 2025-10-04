@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Linkedin, Github, MessageCircle } from "lucide-react"; // use MessageCircle for WhatsApp-like icon
+import { Linkedin, Github, MessageCircle, Twitter } from "lucide-react"; // use MessageCircle for WhatsApp-like icon
 
 const Footer = () => {
   useEffect(() => {
@@ -59,15 +59,15 @@ const Footer = () => {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/2348138127202" 
+            href="@Alisha__O" 
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-300 hover:text-green-500 transition-colors duration-300 transform hover:scale-110"
-            aria-label="WhatsApp"
+            aria-label="X"
             data-aos="flip-up"
             data-aos-delay="800"
           >
-            <MessageCircle className="w-8 h-8" />
+            <Twitter className="w-8 h-8" />
           </a>
         </div>
 
