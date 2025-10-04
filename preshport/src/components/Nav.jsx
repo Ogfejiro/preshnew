@@ -54,7 +54,7 @@ const Nav = () => {
               Contact
             </a>
 
-            <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+            
           </div>
         </div>
       </nav>
