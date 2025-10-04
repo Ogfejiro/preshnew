@@ -1,105 +1,84 @@
-"use client"; // This directive is necessary because this component uses useState
-
+"use client";
 import React, { useState, useEffect } from "react";
 import { ModeToggle } from "./ModeToggle";
-import { Menu, X } from "lucide-react"; // icons for mobile menu
+import { User, Folder, Briefcase, Mail } from "lucide-react"; // icons
 
 const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu
   const [darkMode, setDarkMode] = useState(false);
 
-  // ✅ Apply/remove dark mode on <html> tag globally
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    // ✅ Enable smooth scrolling globally
+    document.documentElement.classList.add("scroll-smooth");
   }, [darkMode]);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 py-4 shadow-md font-inter transition-colors duration-500">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo/Name */}
-        <div>
+    <>
+      {/* Desktop Nav */}
+      <nav className="hidden md:block bg-white/30 backdrop-blur-lg rounded-2xl border border-white/30 shadow-lg z-20 dark:bg-gray-900 py-4 shadow-md font-inter transition-colors duration-500">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          {/* Logo */}
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Ogwara Precious
+            Ogwara Alisha
           </h1>
-        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <a
-            href="#about"
-            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            About
-          </a>
-          <a
-            href="#project"
-            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Projects
-          </a>
-          <a
-            href="#services"
-            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Services
-          </a>
-          <a
-            href="#contact"
-            className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Contact
-          </a>
+          {/* Links */}
+          <div className="flex items-center gap-6">
+            <a
+              href="#about"
+              className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            >
+              Services
+            </a>
+            <a
+              href="#project"
+              className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            >
+              Contact
+            </a>
 
-          {/* Mode Toggle */}
-          <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+            <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button + ModeToggle */}
-        <div className="md:hidden flex items-center gap-4">
-          <ModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-800 dark:text-gray-200 focus:outline-none"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+      {/* Mobile Bottom Nav */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 flex justify-around items-center py-3 z-50">
+        <a href="#about" className="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-blue-600">
+          <User size={22} />
+          <span className="text-xs">About</span>
+        </a>
+        <a href="#services" className="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-blue-600">
+          <Folder size={22} />
+          <span className="text-xs">Services</span>
+        </a>
+        <a href="#project" className="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-blue-600">
+          <Briefcase size={22} />
+          <span className="text-xs">Project</span>
+        </a>
+        <a href="#contact" className="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-blue-600">
+          <Mail size={22} />
+          <span className="text-xs">Contact</span>
+        </a>
       </div>
-
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 px-4 pt-4 pb-6 space-y-4">
-          <a
-            href="#about"
-            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            About
-          </a>
-          <a
-            href="#project"
-            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Projects
-          </a>
-          <a
-            href="#services"
-            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Services
-          </a>
-          <a
-            href="#contact"
-            className="block text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
-          >
-            Contact
-          </a>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 

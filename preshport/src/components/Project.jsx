@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 
 // ✅ Project Card component
 const ProjectCard = ({ project }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
+  <div id="project" className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
     <img
       src={project.imageUrl}
       alt={project.name}
@@ -131,8 +131,8 @@ const Project = () => {
         description:
           "A clone replica of an application that allows users to order food from a food brand based on dietary preferences.",
         imageUrl: "./zeal.jpg",
-        tags: ["React", "Redux", "Spoonacular API"],
-        link: "https://your-demo-url.com/recipe-finder",
+        tags: ["Next.js", "Tailwindcss", "Spoonacular API"],
+        link: "https://cuisine-ncuc.vercel.app/",
       },
     ],
     []

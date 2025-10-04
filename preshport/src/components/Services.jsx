@@ -20,6 +20,7 @@ const App = () => {
 const Services = () => {
   return (
     <div
+    id="services"
       className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8"
       data-aos="fade-up"
     >

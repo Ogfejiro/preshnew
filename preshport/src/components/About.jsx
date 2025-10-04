@@ -10,7 +10,10 @@ const About = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 p-4 sm:p-8 font-inter text-gray-800 dark:text-gray-200 flex items-center justify-center transition-colors duration-500">
+    <div
+      id="about"
+      className="min-h-screen bg-white dark:bg-gray-900 p-4 sm:p-8 font-inter text-gray-800 dark:text-gray-200 flex items-center justify-center transition-colors duration-500"
+    >
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
           {/* Text Content */}
@@ -27,26 +30,31 @@ const About = () => {
             </h1>
             <p
               className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8"
-              data-aos="fade-up"
+              data-aos="zoom-in"
               data-aos-delay="400"
             >
-              Hi! I'm Ogwara Precious, a  Frontend Developer with 3years experience. I specialize
-              in creating user-friendly and efficient digital websites.
+              Hi! I'm Ogwara Precious, a Frontend Developer with 3 years
+              experience. I specialize in creating user-friendly and efficient
+              digital websites.
             </p>
-            
-            <button
+
+            {/* ✅ WhatsApp Contact Button */}
+            <a
+              href="https://wa.me/2349034982572" // 🔥 replace with your WhatsApp number
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
               data-aos="zoom-in"
               data-aos-delay="600"
             >
               Contact Me
-            </button>
+            </a>
           </div>
 
           {/* Image Section */}
           <div
             className="md:w-1/2 flex justify-center items-center"
-            data-aos="fade-left"
+            data-aos="fade-right"
           >
             <img
               src="./about.jpg"
