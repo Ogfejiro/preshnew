@@ -1,84 +1,42 @@
-"use client"; // Required for client-side features like AOS
+"use client";
 
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { Linkedin, Github, Twitter } from "lucide-react";
+import React from "react";
 
 const Footer = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
-
   return (
-    <footer
-      className="bg-white  py-12 shadow-inner mt-16 transition-colors duration-500"
-      data-aos="fade-up"
-    >
+    <footer className="bg-white text-gray-800 border-t border-gray-200 py-8 mt-16 shadow-inner">
       <div className="container mx-auto px-4 text-center">
-        {/* Copyright */}
-        <p
-          className="text-gray-700 dark:text-gray-300 text-lg mb-4"
-          data-aos="fade-down"
-          data-aos-delay="100"
-        >
-          &copy; {new Date().getFullYear()} Precious Ogwara. All rights reserved.
+        <p className="text-sm text-gray-600">
+          © {new Date().getFullYear()} Your Name. All rights reserved.
         </p>
 
-        {/* Social Icons */}
-        <div
-          className="flex justify-center items-center space-x-6 mb-8"
-          data-aos="zoom-in"
-          data-aos-delay="300"
-        >
-          {/* LinkedIn */}
+        {/* Social Links */}
+        <div className="flex justify-center space-x-6 mt-4">
           <a
-            href="https://www.linkedin.com/in/precious-ogwara-191b5934a"
+            href="https://wa.me/2349034982572"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
-            aria-label="LinkedIn Profile"
-            data-aos="flip-left"
-            data-aos-delay="400"
+            className="text-green-600 hover:text-green-700 transition-colors duration-300"
           >
-            <Linkedin className="w-8 h-8" />
+            WhatsApp
           </a>
-
-          {/* GitHub */}
           <a
-            href="https://github.com/Ogfejiro"
+            href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 transform hover:scale-110"
-            aria-label="GitHub Profile"
-            data-aos="flip-right"
-            data-aos-delay="600"
+            className="text-gray-700 hover:text-gray-900 transition-colors duration-300"
           >
-            <Github className="w-8 h-8" />
+            GitHub
           </a>
-
-          {/* Twitter (X) */}
           <a
-            href="https://x.com/alisha__O"
+            href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-sky-500 transition-colors duration-300 transform hover:scale-110"
-            aria-label="Twitter Profile"
-            data-aos="flip-up"
-            data-aos-delay="800"
+            className="text-blue-600 hover:text-blue-700 transition-colors duration-300"
           >
-            <Twitter className="w-8 h-8" />
+            LinkedIn
           </a>
         </div>
-
-        {/* Tagline */}
-        <p
-          className="text-gray-500 dark:text-gray-400 text-sm"
-          data-aos="fade-up"
-          data-aos-delay="1200"
-        >
-          Designed and built by alisha.
-        </p>
       </div>
     </footer>
   );

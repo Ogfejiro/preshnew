@@ -4,7 +4,10 @@ import React, { useState, useMemo } from "react";
 
 // ✅ Project Card component
 const ProjectCard = ({ project }) => (
-  <div id="project" className="bg-white  rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
+  <div
+    id="project"
+    className="bg-white rounded-2xl shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col border border-gray-100"
+  >
     <img
       src={project.imageUrl}
       alt={project.name}
@@ -15,17 +18,17 @@ const ProjectCard = ({ project }) => (
       }}
     />
     <div className="p-6 flex flex-col flex-grow">
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">
         {project.name}
       </h3>
-      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
+      <p className="text-gray-600 text-sm mb-4 flex-grow">
         {project.description}
       </p>
       <div className="flex flex-wrap gap-2 mb-4">
         {project.tags.map((tag, index) => (
           <span
             key={index}
-            className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full"
+            className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full"
           >
             {tag}
           </span>
@@ -51,11 +54,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <nav className="flex justify-start items-center space-x-2 mt-8 font-inter">
+    <nav className="flex justify-center items-center space-x-2 mt-10 font-inter">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
+        className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
       >
         Previous
       </button>
@@ -63,12 +66,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={number}
           onClick={() => onPageChange(number)}
-          className={`px-4 py-2 rounded-md transition-colors duration-200 shadow-sm
-            ${
-              currentPage === number
-                ? "bg-blue-600 text-white shadow-md"
-                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"
-            }`}
+          className={`px-4 py-2 rounded-md transition-colors duration-200 shadow-sm ${
+            currentPage === number
+              ? "bg-blue-600 text-white shadow-md"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
         >
           {number}
         </button>
@@ -76,7 +78,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
+        className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
       >
         Next
       </button>
@@ -102,7 +104,7 @@ const Project = () => {
         id: "2",
         name: "An Autolocksmith landing-page",
         description:
-          "A simple landing page of a locksmith company, showcasing every activity in the companies.",
+          "A simple landing page of a locksmith company, showcasing their services and expertise.",
         imageUrl: "./project 2.png",
         tags: ["Next.js", "Firebase", "Tailwind CSS"],
         link: "https://willowy-shortbread-3ded26.netlify.app/",
@@ -111,7 +113,7 @@ const Project = () => {
         id: "3",
         name: "Admin dashboard",
         description:
-          "A dynamic admin-dashboard that shows real-time data information of a company using a third-party API.",
+          "A dynamic admin-dashboard that shows real-time company data using third-party APIs.",
         imageUrl: "./dashboard.jpg",
         tags: ["Next.js", "Tailwindcss", "Shadcn"],
         link: "https://admin-eofj.vercel.app/",
@@ -120,16 +122,16 @@ const Project = () => {
         id: "4",
         name: "A loan app",
         description:
-          "A loan app that helps loan companies know if you are eligible for a loan.",
+          "A loan app that helps companies check if a customer is eligible for a loan.",
         imageUrl: "./project 3.png",
-        tags: ["Next.js, Tailwindcss, TypeScript"],
+        tags: ["Next.js", "Tailwindcss", "TypeScript"],
         link: "https://loanwise-b-team.vercel.app/",
       },
       {
         id: "5",
         name: "ZealTaste Foods",
         description:
-          "A clone replica of an application that allows users to order food from a food brand based on dietary preferences.",
+          "A replica of a food app allowing users to order meals based on dietary preferences.",
         imageUrl: "./zeal.jpg",
         tags: ["Next.js", "Tailwindcss", "Spoonacular API"],
         link: "https://cuisine-ncuc.vercel.app/",
@@ -156,10 +158,10 @@ const Project = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-500 p-4 sm:p-8 font-inter text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gray-50 p-6 sm:p-12 font-inter text-gray-900">
       <header className="text-center py-10">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">My Projects</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Explore a collection of my recent works, showcasing my skills in web
           development and design.
         </p>
@@ -167,13 +169,13 @@ const Project = () => {
 
       <main className="container mx-auto px-4">
         {currentProjects.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {currentProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-600 dark:text-gray-300 text-lg py-10">
+          <p className="text-center text-gray-600 text-lg py-10">
             No projects to display.
           </p>
         )}

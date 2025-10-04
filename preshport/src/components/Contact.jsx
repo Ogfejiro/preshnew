@@ -8,7 +8,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: "", message: "" });
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true }); // Initialize AOS
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   const handleChange = (e) => {
@@ -18,35 +18,33 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Format WhatsApp message
     const whatsappMessage = `Hello, my name is ${formData.name}. 
 Here is my message: ${formData.message}`;
 
-    // ✅ Your WhatsApp number in international format
     const phoneNumber = "2349034982572";
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
 
-    // Redirect to WhatsApp
     window.open(whatsappURL, "_blank");
   };
 
   return (
     <section
       id="contact"
-      className="py-16 bg-white  rounded-xl shadow-2xl mt-16 text-gray-800 dark:text-gray-200 transition-colors duration-500"
+      className="py-20 bg-white rounded-xl shadow-md mt-16 text-gray-800 transition-colors duration-500"
       data-aos="fade-up"
     >
       <div className="container mx-auto px-4 text-center">
+        {/* Title */}
         <h2
-          className="text-4xl font-bold mb-6 text-gray-900 dark:text-white"
+          className="text-4xl font-bold mb-6 text-gray-900"
           data-aos="fade-down"
         >
           Get in Touch!
         </h2>
         <p
-          className="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto"
+          className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto"
           data-aos="zoom-in"
         >
           I'm always open to new opportunities and collaborations.
@@ -54,18 +52,19 @@ Here is my message: ${formData.message}`;
 
         {/* Contact Form */}
         <div
-          className="max-w-md mx-auto bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-xl transition-colors duration-500"
+          className="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200"
           data-aos="fade-up"
           data-aos-delay="400"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <h3 className="text-2xl font-semibold mb-6 text-gray-900">
             Send Me a Message
           </h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name Field */}
             <div data-aos="fade-right">
               <label
                 htmlFor="name"
-                className="block text-left text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+                className="block text-left text-gray-700 text-sm font-medium mb-1"
               >
                 Name
               </label>
@@ -75,16 +74,17 @@ Here is my message: ${formData.message}`;
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
                 placeholder="Your Name"
                 required
               />
             </div>
 
+            {/* Message Field */}
             <div data-aos="zoom-in">
               <label
                 htmlFor="message"
-                className="block text-left text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+                className="block text-left text-gray-700 text-sm font-medium mb-1"
               >
                 Message
               </label>
@@ -94,18 +94,19 @@ Here is my message: ${formData.message}`;
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
                 placeholder="Your message..."
                 required
               ></textarea>
             </div>
 
+            {/* WhatsApp Button */}
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500"
               data-aos="zoom-in-up"
             >
-              Send me a message
+              Send via WhatsApp
             </button>
           </form>
         </div>
