@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-white dark:bg-gray-900 py-12 shadow-inner mt-16 transition-colors duration-500"
+      className="bg-white  py-12 shadow-inner mt-16 transition-colors duration-500"
       data-aos="fade-up"
     >
       <div className="container mx-auto px-4 text-center">

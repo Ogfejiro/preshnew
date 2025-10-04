@@ -35,7 +35,7 @@ Here is my message: ${formData.message}`;
   return (
     <section
       id="contact"
-      className="py-16 bg-white dark:bg-gray-900 rounded-xl shadow-2xl mt-16 text-gray-800 dark:text-gray-200 transition-colors duration-500"
+      className="py-16 bg-white  rounded-xl shadow-2xl mt-16 text-gray-800 dark:text-gray-200 transition-colors duration-500"
       data-aos="fade-up"
     >
       <div className="container mx-auto px-4 text-center">

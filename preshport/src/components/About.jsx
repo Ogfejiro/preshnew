@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="min-h-screen bg-white dark:bg-gray-900 p-4 sm:p-8 font-inter text-gray-800 dark:text-gray-200 flex items-center justify-center transition-colors duration-500"
+      className="min-h-screen bg-white  p-4 sm:p-8 font-inter text-gray-800 dark:text-gray-200 flex items-center justify-center transition-colors duration-500"
     >
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">

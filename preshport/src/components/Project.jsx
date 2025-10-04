@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 
 // ✅ Project Card component
 const ProjectCard = ({ project }) => (
-  <div id="project" className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
+  <div id="project" className="bg-white  rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col">
     <img
       src={project.imageUrl}
       alt={project.name}
