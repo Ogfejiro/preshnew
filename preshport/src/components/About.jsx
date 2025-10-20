@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="min-h-screen bg-white p-4 sm:p-8 font-inter text-gray-800 flex items-center justify-center transition-colors duration-500"
+      className="min-h-screen w-full bg-white p-4 sm:p-8 font-inter text-gray-800 flex items-center justify-center transition-colors duration-500"
     >
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
@@ -23,16 +23,14 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              I develop functional and engaging web and mobile applications.
+              Crafting digital experiences where art meeets technology.
             </h1>
             <p
               className="text-lg sm:text-xl text-gray-600 mb-8"
               data-aos="zoom-in"
               data-aos-delay="400"
             >
-              Hi! I'm Ogwara Precious, a Frontend Developer with 3 years
-              experience. I specialize in creating user-friendly and efficient
-              digital websites.
+              Hi! I'm Ogwara Precious Alisha, a frontend developer who builds clean, intuitive, and visually balanced interfaces. Every pixel and line of code is placed with purpose.
             </p>
 
             <a
@@ -40,10 +38,10 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              data-aos="zoom-in"
+              data-aos="fade-in"
               data-aos-delay="600"
             >
-              Contact Me
+              Let's Collaborate
             </a>
           </div>
 
