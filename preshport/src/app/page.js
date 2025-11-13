@@ -1,5 +1,5 @@
 import About from '@/components/About';
-import Nav from '@/components/Nav'
+import Nav from '@/components/Nav';
 import Services from '@/components/Services';
 import Project from '@/components/Project';
 import Contact from '@/components/Contact';
@@ -8,7 +8,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Nav/>
       <About/>
       <Services/>
