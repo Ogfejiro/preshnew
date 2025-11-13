@@ -16,7 +16,11 @@ const About = () => {
   return (
     <div
       id="about"
+<<<<<<< HEAD
       className="min-h-screen bg-white relative overflow-hidden font-inter text-gray-800 flex items-center justify-center"
+=======
+      className="min-h-screen w-full bg-white p-4 sm:p-8 font-inter text-gray-800 flex items-center justify-center transition-colors duration-500"
+>>>>>>> 8b6067906d576ccc56445179b44495bfe280b9f8
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
@@ -35,6 +39,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
+<<<<<<< HEAD
               <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
               Available for new projects
             </div>
@@ -50,6 +55,9 @@ const About = () => {
                 <div className="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -rotate-1 z-0"></div>
               </span>{' '}
               technology.
+=======
+              Crafting digital experiences where art meeets technology.
+>>>>>>> 8b6067906d576ccc56445179b44495bfe280b9f8
             </h1>
             
             <p
@@ -57,6 +65,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="400"
             >
+<<<<<<< HEAD
               Hi! I'm <span className="font-semibold text-blue-600">Ogwara Precious Alisha</span>, a passionate frontend developer with 4 years of experience building clean, intuitive, and visually balanced interfaces. Every pixel and line of code is placed with purpose to create memorable digital experiences.
             </p>
 
@@ -90,6 +99,21 @@ const About = () => {
                 </svg>
               </a>
             </div>
+=======
+              Hi! I'm Ogwara Precious Alisha, a frontend developer who builds clean, intuitive, and visually balanced interfaces. Every pixel and line of code is placed with purpose.
+            </p>
+
+            <a
+              href="https://wa.me/2349034982572"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              data-aos="fade-in"
+              data-aos-delay="600"
+            >
+              Let's Collaborate
+            </a>
+>>>>>>> 8b6067906d576ccc56445179b44495bfe280b9f8
           </div>
 
           {/* Image Section */}
