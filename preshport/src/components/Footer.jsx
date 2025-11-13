@@ -1,84 +1,159 @@
-"use client"; // Required for client-side features like AOS
+"use client";
 
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Linkedin, Github, MessageCircle, Twitter } from "lucide-react"; // use MessageCircle for WhatsApp-like icon
+import { Linkedin, Github, Twitter, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const socialLinks = [
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/alisha-ogwara-191b5934a/",
+      label: "LinkedIn Profile",
+      color: "hover:text-blue-600",
+      delay: 400
+    },
+    {
+      icon: Github,
+      href: "https://github.com/Ogfejiro",
+      label: "GitHub Profile",
+      color: "hover:text-gray-900",
+      delay: 600
+    },
+    {
+      icon: Twitter,
+      href: "https://x.com/Alisha__O",
+      label: "Twitter Profile",
+      color: "hover:text-blue-400",
+      delay: 800
+    },
+    {
+      icon: Mail,
+      href: "mailto:your.email@example.com",
+      label: "Send Email",
+      color: "hover:text-red-500",
+      delay: 1000
+    }
+  ];
+
+  const quickLinks = [
+    { name: "Home", href: "#home" },
+    { name: "Projects", href: "#projects" },
+    { name: "Services", href: "#services" },
+    { name: "About", href: "#about" },
+    { name: "Contact", href: "#contact" }
+  ];
+
   return (
-    <footer
-      className="bg-white  py-12 shadow-inner mt-16 transition-colors duration-500"
-      data-aos="fade-up"
-    >
-      <div className="container mx-auto px-4 text-center">
-        {/* Copyright */}
-        <p
-          className="text-gray-700 dark:text-gray-300 text-lg mb-4"
-          data-aos="fade-down"
-          data-aos-delay="100"
-        >
-          &copy; {new Date().getFullYear()} Precious Ogwara. All rights reserved.
-        </p>
-
-        {/* Social Icons */}
-        <div
-          className="flex justify-center items-center space-x-6 mb-8"
-          data-aos="zoom-in"
-          data-aos-delay="300"
-        >
-          {/* LinkedIn */}
-          <a
-            href="https://www.linkedin.com/in/precious-ogwara-191b5934a"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
-            aria-label="LinkedIn Profile"
-            data-aos="flip-left"
-            data-aos-delay="400"
+    <footer className="bg-gradient-to-br from-gray-50 to-white border-t border-gray-200 py-16">
+      <div className="container mx-auto px-6">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Brand Section */}
+          <div
+            className="text-center md:text-left"
+            data-aos="fade-right"
           >
-            <Linkedin className="w-8 h-8" />
-          </a>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Alisha Ogwara
+            </h3>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              Frontend developer crafting beautiful, functional digital experiences 
+              with modern technologies and clean code.
+            </p>
+            <div className="flex justify-center md:justify-start gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110 ${social.color}`}
+                  aria-label={social.label}
+                  data-aos="zoom-in"
+                  data-aos-delay={social.delay}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-          {/* GitHub */}
-          <a
-            href="https://github.com/Ogfejiro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 transform hover:scale-110"
-            aria-label="GitHub Profile"
-            data-aos="flip-right"
-            data-aos-delay="600"
+          {/* Quick Links */}
+          <div
+            className="text-center"
+            data-aos="fade-up"
           >
-            <Github className="w-8 h-8" />
-          </a>
+            <h4 className="text-lg font-semibold text-gray-900 mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
+                    data-aos="fade-up"
+                    data-aos-delay={100 * index}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* WhatsApp */}
-          <a
-            href="@Alisha__O" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-green-500 transition-colors duration-300 transform hover:scale-110"
-            aria-label="X"
-            data-aos="flip-up"
-            data-aos-delay="800"
+          {/* Contact Info */}
+          <div
+            className="text-center md:text-right"
+            data-aos="fade-left"
           >
-            <Twitter className="w-8 h-8" />
-          </a>
+            <h4 className="text-lg font-semibold text-gray-900 mb-6">Get In Touch</h4>
+            <div className="space-y-3 text-gray-600">
+              <p className="font-medium">+234 903 498 2572</p>
+              <p className="font-medium">ogwaraprecious8@gmail.com</p>
+              <p className="text-sm">Nigeria</p>
+            </div>
+          </div>
         </div>
 
-        {/* Tagline */}
-        <p
-          className="text-gray-500 dark:text-gray-400 text-sm"
-          data-aos="fade-up"
-          data-aos-delay="1200"
-        >
-          Designed and built by alisha.
-        </p>
+        {/* Divider */}
+        <div className="border-t border-gray-200 pt-8">
+          {/* Bottom Section */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <p
+              className="text-gray-600 text-center md:text-left"
+              data-aos="fade-right"
+            >
+              &copy; {new Date().getFullYear()} Precious Ogwara. All rights reserved.
+            </p>
+
+            {/* Made with love */}
+            <div
+              className="flex items-center gap-2 text-gray-600"
+              data-aos="fade-left"
+            >
+              <span className="text-sm">Designed and built with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span className="text-sm">by Alisha</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Back to Top */}
+        <div className="text-center mt-8">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm font-medium"
+            data-aos="fade-up"
+          >
+            Back to Top ↑
+          </button>
+        </div>
       </div>
     </footer>
   );

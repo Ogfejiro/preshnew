@@ -1,52 +1,89 @@
-"use client"; // This directive marks the component as a Client Component
+"use client";
 
 import React, { useState, useMemo } from "react";
 
-// ✅ Project Card component
-const ProjectCard = ({ project }) => (
-  <div
-    id="project"
-    className="bg-white rounded-2xl shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col border border-gray-100"
-  >
-    <img
-      src={project.imageUrl}
-      alt={project.name}
-      className="w-full h-48 object-cover"
-      onError={(e) => {
-        e.target.onerror = null;
-        e.target.src = `https://placehold.co/400x250/E2E8F0/475569?text=Image+Error`;
-      }}
-    />
-    <div className="p-6 flex flex-col flex-grow">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">
-        {project.name}
-      </h3>
-      <p className="text-gray-600 text-sm mb-4 flex-grow">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
+// ✅ Full-width Project Item component
+const ProjectItem = ({ project }) => (
+  <div className="group relative bg-gradient-to-br from-white to-gray-50/80 p-8 lg:p-12 rounded-none lg:rounded-2xl border-b border-gray-200 lg:border lg:border-gray-100 hover:border-blue-200 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/30 backdrop-blur-sm">
+    {/* Background gradient effect on hover */}
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-purple-50/50 rounded-none lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    
+    <div className="relative flex flex-col xl:flex-row gap-8 xl:gap-12 items-start max-w-7xl mx-auto">
+      {/* Project Image with modern frame */}
+      <div className="xl:w-2/5 w-full">
+        <div className="relative overflow-hidden rounded-none lg:rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500">
+          <img
+            src={project.imageUrl}
+            alt={project.name}
+            className="w-full h-64 lg:h-80 object-cover transform group-hover:scale-105 transition-transform duration-700"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = `https://placehold.co/800x500/E2E8F0/475569?text=Project+Image`;
+            }}
+          />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
       </div>
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200 text-center mt-auto"
-      >
-        View Project
-      </a>
+      
+      {/* Project Content */}
+      <div className="xl:w-3/5 w-full flex flex-col space-y-6">
+        {/* Project Header */}
+        <div>
+          <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent mb-4">
+            {project.name}
+          </h3>
+          <p className="text-gray-600 text-lg lg:text-xl leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        
+        {/* Tags with better styling */}
+        <div className="flex flex-wrap gap-3">
+          {project.tags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-semibold rounded-full border border-blue-200/50 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        {/* Action Buttons with modern design */}
+        <div className="flex flex-wrap gap-4 pt-4">
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-gray-700 hover:to-gray-800"
+          >
+            <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View Code
+            <div className="absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+          
+          <a
+            href={project.liveDemoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-blue-500 hover:to-purple-500"
+          >
+            <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Live Demo
+            <div className="absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 );
 
-// ✅ Pagination component
+// ✅ Full-width Pagination component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -54,88 +91,88 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <nav className="flex justify-center items-center space-x-2 mt-10 font-inter">
+    <nav className="flex justify-center items-center space-x-3 mt-12 font-inter w-full py-8 bg-gray-50/50">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
+        className="px-6 py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 font-medium hover:from-gray-200 hover:to-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200/50 transform hover:scale-105"
       >
-        Previous
+        ← Previous
       </button>
+      
       {pageNumbers.map((number) => (
         <button
           key={number}
           onClick={() => onPageChange(number)}
-          className={`px-4 py-2 rounded-md transition-colors duration-200 shadow-sm ${
+          className={`px-5 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-110 ${
             currentPage === number
-              ? "bg-blue-600 text-white shadow-md"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-500/25 scale-110"
+              : "bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 shadow-lg hover:shadow-xl border border-gray-200/50 hover:from-gray-200 hover:to-gray-100"
           }`}
         >
           {number}
         </button>
       ))}
+      
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
+        className="px-6 py-3 rounded-xl bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 font-medium hover:from-gray-200 hover:to-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200/50 transform hover:scale-105"
       >
-        Next
+        Next →
       </button>
     </nav>
   );
 };
 
-// ✅ Main Project Component
+// ✅ Full-width Main Project Component
 const Project = () => {
-  // Demo project data with links
   const projects = useMemo(
     () => [
       {
         id: "1",
-        name: "Automobile landing-page",
-        description:
-          "A landing page for a car manufacturer, fully animated showcasing every activity of the company.",
-        imageUrl: "./project 1.png",
-        tags: ["React", "Firebase", "Tailwindcss"],
-        link: "https://gisjohnsonautolocksmith.com/",
+        name: "Dishcovery",
+        description: "A comprehensive recipe platform that enables users to search for diverse food recipes and contribute their own culinary creations. Features include user authentication, recipe management, and advanced search filters.",
+        imageUrl: "./dishcovery.jpg",
+        tags: ["Html", "Css", "Javascript", "Api"],
+        githubLink: "https://github.com/Ogfejiro/Dishcovery",
+        liveDemoLink: "https://dishcovery-ivory.vercel.app/",
       },
       {
         id: "2",
-        name: "An Autolocksmith landing-page",
-        description:
-          "A simple landing page of a locksmith company, showcasing their services and expertise.",
-        imageUrl: "./project 2.png",
-        tags: ["Next.js", "Firebase", "Tailwind CSS"],
-        link: "https://willowy-shortbread-3ded26.netlify.app/",
+        name: "Portfolio website",
+        description: "A portfolio website of a web3 marketer, showcasing his project and records",
+        imageUrl: "./10x.jpg",
+        tags: ["Next.js","Tailwind CSS", "Shadcn"],
+        githubLink: "https://github.com/Ogfejiro/10Xofweb3",
+        liveDemoLink: "https://10-xofweb3.vercel.app/",
       },
       {
         id: "3",
-        name: "Admin dashboard",
-        description:
-          "A dynamic admin-dashboard that shows real-time company data using third-party APIs.",
-        imageUrl: "./dashboard.jpg",
-        tags: ["Next.js", "Tailwindcss", "Shadcn"],
-        link: "https://admin-eofj.vercel.app/",
+        name: "Loanwise",
+        description: "A website thst allows loan apps check thier client credit score before borrowing them money from thier company",
+        imageUrl: "./loanwise.jpg",
+        tags: ["Next.js", "Tailwindcss", "Shadcn", "Chart.js", "API"],
+        liveDemoLink: "https://loanwise-b-team.vercel.app/",
       },
       {
         id: "4",
-        name: "A loan app",
-        description:
-          "A loan app that helps companies check if a customer is eligible for a loan.",
-        imageUrl: "./project 3.png",
-        tags: ["Next.js", "Tailwindcss", "TypeScript"],
-        link: "https://loanwise-b-team.vercel.app/",
+        name: "Gis Auto",
+        description: "A one page website for an auto business, showing everthing about the company.",
+        imageUrl: "./gis.jpg",
+        tags: ["Next.js", "TypeScript", "Tailwindcss", "AI/ML"],
+        githubLink: "https://github.com/Adufe-Obanijesu/gis",
+        liveDemoLink: "https://gis-beryl.vercel.app/",
       },
-      {
-        id: "5",
-        name: "ZealTaste Foods",
-        description:
-          "A replica of a food app allowing users to order meals based on dietary preferences.",
-        imageUrl: "./zeal.jpg",
-        tags: ["Next.js", "Tailwindcss", "Spoonacular API"],
-        link: "https://cuisine-ncuc.vercel.app/",
-      },
+      // {
+      //   id: "5",
+      //   name: "Admin dashboard",
+      //   description: "An admin dashboard that shows graph and revenue details",
+      //   imageUrl: "./dashboard (2).jpg",
+      //   tags: ["Next.js",  "Tailwindcss", "Shadcn"],
+      //   githubLink: "https://github.com/yourusername/zealtaste-foods",
+      //   liveDemoLink: "https://cuisine-ncuc.vercel.app/",
+      // },
     ],
     []
   );
@@ -143,10 +180,8 @@ const Project = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
 
-  // Total pages
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
-  // Get projects for the current page
   const currentProjects = useMemo(() => {
     const startIndex = (currentPage - 1) * projectsPerPage;
     const endIndex = startIndex + projectsPerPage;
@@ -158,36 +193,50 @@ const Project = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 sm:p-12 font-inter text-gray-900">
-      <header className="text-center py-10">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">My Projects</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Explore a collection of my recent works, showcasing my skills in web
-          development and design.
-        </p>
-      </header>
-
-      <main className="container mx-auto px-4">
-        {currentProjects.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {currentProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20 font-inter text-gray-900 w-full">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="relative z-10 w-full">
+        {/* Full-width header */}
+        <header className="w-full py-20 bg-gradient-to-r from-gray-50/80 to-blue-50/50 border-b border-gray-200/50">
+          <div className="w-full px-6 lg:px-12">
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-700 bg-clip-text text-transparent text-center">
+              My Projects
+            </h1>
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-6xl mx-auto leading-relaxed text-center">
+              Discover my journey through innovative web development projects. 
+              Each creation represents unique challenges solved with modern technologies and clean code.
+            </p>
           </div>
-        ) : (
-          <p className="text-center text-gray-600 text-lg py-10">
-            No projects to display.
-          </p>
-        )}
+        </header>
 
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        )}
-      </main>
+        <main className="w-full">
+          {currentProjects.length > 0 ? (
+            <div className="w-full">
+              {currentProjects.map((project) => (
+                <ProjectItem key={project.id} project={project} />
+              ))}
+            </div>
+          ) : (
+            <div className="w-full py-32 text-center bg-white">
+              <div className="text-6xl mb-4">🚧</div>
+              <p className="text-xl text-gray-600">More amazing projects coming soon!</p>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </main>
+      </div>
     </div>
   );
 };
