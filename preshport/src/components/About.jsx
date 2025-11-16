@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from 'next/link';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -88,15 +89,15 @@ const About = () => {
                 </span>
               </a>
               
-              <a
-                href="./project"
+              <Link
+                href="#project"
                 className="group inline-flex items-center justify-center border border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-700 font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-200 text-sm sm:text-base"
               >
                 View My Work
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 

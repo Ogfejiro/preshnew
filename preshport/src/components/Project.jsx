@@ -91,7 +91,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <nav className="flex justify-center items-center space-x-3 mt-12 font-inter w-full py-8 bg-gray-50/50">
+    <nav id="project" className="flex justify-center items-center space-x-3 mt-12 font-inter w-full py-8 bg-gray-50/50">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

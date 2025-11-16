@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Ogwara Alisha",
   description: "Alisha",
+  
 };
 
 export default function RootLayout({ children }) {
