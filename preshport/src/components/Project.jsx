@@ -153,6 +153,7 @@ const Project = () => {
         description: "A website thst allows loan apps check thier client credit score before borrowing them money from thier company",
         imageUrl: "./loanwise.jpg",
         tags: ["Next.js", "Tailwindcss", "Shadcn", "Chart.js", "API"],
+        githubLink: "https://github.com/t1-loanwise/loanwise-b-team",
         liveDemoLink: "https://loanwise-b-team.vercel.app/",
       },
       {
